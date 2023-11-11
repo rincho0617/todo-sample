@@ -7,32 +7,32 @@ const state: {todos: TodoItem[]} = {
         {
           id: "1",
           categoryId: "1",
-          title: "テスト1",
-          content: "テスト1の内容",
+          title: "市場調査",
+          content: "関西圏の顧客動向を資料にまとめる",
           status: TodoStatus.pending,
           createdAt: 1
         },
         {
           id: "2",
           categoryId: "2",
-          title: "テスト2",
-          content: "テスト2の内容",
+          title: "Reactの調査をする",
+          content: "stateとreducerについて調べる",
           status: TodoStatus.pending,
           createdAt: 2
         },
         {
             id: "3",
             categoryId: "2",
-            title: "テスト3",
-            content: "テスト3の内容",
+            title: "PCの環境構築をする",
+            content: "・macを最新にする\n・dockerをinstallする",
             status: TodoStatus.pending,
             createdAt: 1
         },
         {
             id: "4",
             categoryId: undefined,
-            title: "テスト4",
-            content: "テスト4の内容",
+            title: "ランニングをする",
+            content: "10km走る",
             status: TodoStatus.pending,
             createdAt: 3
         }
@@ -54,8 +54,12 @@ export const todoSlice = createSlice({
         updateStatus: (state, action: PayloadAction<{id: string, newStatus: TodoStatus}>) => {
             const {id, newStatus} = action.payload
             state.todos = state.todos.map(todo => todo.id === id ? {...todo, status: newStatus} : todo)
+        },
+        update: (state, action: PayloadAction<{ id: string; updatedTodo: Partial<TodoItem> }>) => {
+            const { id, updatedTodo } = action.payload;
+            state.todos = state.todos.map((todo) => (todo.id === id ? { ...todo, ...updatedTodo } : todo));
         }
     }
 })
 
-export const {add, remove, updateStatus} = todoSlice.actions
+export const {add, remove, updateStatus, update} = todoSlice.actions

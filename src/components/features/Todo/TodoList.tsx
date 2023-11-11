@@ -44,25 +44,38 @@ const TodoList: React.FC<TodoListProps> = ({
     }
 
   return (
-    <div className="w-full h-full border" ref={(node) => drop(node)}>
-      <DndProvider backend={HTML5Backend}>
+    <div className="w-full h-full justify-center" ref={(node) => drop(node)}>
         <div className="h-[10%]">
-            <div 
-                onClick={openModal}
-                className="pt-4 pl-2 cursor-pointer"
-            >
-                <span className="p-2 rounded text-white bg-gray-500">
-                    +課題の追加
-                </span>
+            <div>
+
             </div>
+            <div className="flex w-[95%] px-2 pt-8 items-center border-b">
+                <div className="ml-2 font-bold text-lg">{projectStatus}</div>
+                <div className="ml-3 border rounded-full px-2 bg-gray-400">
+                    <span className="">{todos.length}</span>
+                </div>
+            </div>
+
             <AddTodoModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} projectStatus={projectStatus} />
         </div>
-        <div className="overflow-y-auto h-[90%]">
-            {todos.map((todo, index) => (
-            <DraggableTodo key={todo.id} todo={todo} index={index}/>
-            ))}
+        <div className="h-[90%] flex justify-center">
+            <DndProvider backend={HTML5Backend}>
+                <div className="w-[95%] border h-[95%] rounded bg-white">
+                    <div className="h-[10%] flex ">
+                        <span 
+                            onClick={openModal}
+                            className="m-4 rounded text-sm cursor-pointer hover:text-gray-400">
+                            + 課題の追加...
+                        </span>
+                    </div>
+                    <div className="h-[90%] overflow-y-auto">
+                        {todos.map((todo, index) => (
+                            <DraggableTodo key={todo.id} todo={todo} index={index}/>
+                        ))}
+                    </div>
+                </div>
+            </DndProvider>
         </div>
-      </DndProvider>
     </div>
   );
 };

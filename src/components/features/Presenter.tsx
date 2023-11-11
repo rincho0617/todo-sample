@@ -29,55 +29,55 @@ const Presenter: React.FC<PresenterProps> = ({ todos, categories }) => {
 
   return (
     <div className="h-screen flex flex-col">
-      <div className="h-[10%] bg-blue-500 text-white flex items-center justify-between p-4">
-        <div className="text-2xl font-bold">Todoリスト</div>
+      <div className="h-[10%] bg-gray-700 text-white flex items-center justify-between">
+        <div className="text-2xl font-bold ml-2">Todoリスト</div>
         <div className="flex items-center space-x-4">
-          <div className="cursor-pointer" onClick={openModal}>
+          <div className="cursor-pointer mr-2" onClick={openModal}>
             + カテゴリーを追加
           </div>
           <AddCategoryModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
         </div>
       </div>
-      <div className="h-[10%] flex items-center p-4">
-        <AppSelectBox
-          value={selectedCategoryId}
-          options={categoryKV}
-          onChange={handleCategorySelect}
-        />
-      </div>
-      <div className="flex h-[80%]">
-        <div className="w-[33%] p-4 border-r">
-          <h2 className="text-lg font-bold mb-4">未着手</h2>
-          <TodoList
-            todos={todos.filter(
-              (todo) =>
-                (!selectedCategoryId || todo.categoryId === selectedCategoryId) &&
-                todo.status === TodoStatus.pending
-            )}
-            projectStatus={TodoStatus.pending}
-          />
+      <div className="h-[90%] bg-gray-200">
+        <div className="h-[10%] w-[95%] mx-auto">
+            <div className="flex-column py-3 pl-3">
+                <div className="">
+                    カテゴリー
+                </div>
+                <div className="w-[20%]">
+                    <AppSelectBox
+                    value={selectedCategoryId}
+                    options={categoryKV}
+                    onChange={handleCategorySelect}
+                    />
+                </div>
+            </div>
         </div>
-        <div className="w-[33%] p-4 border-r">
-          <h2 className="text-lg font-bold mb-4">処理中</h2>
-          <TodoList
-            todos={todos.filter(
-              (todo) =>
-                (!selectedCategoryId || todo.categoryId === selectedCategoryId) &&
-                todo.status === TodoStatus.inProgress
-            )}
-            projectStatus={TodoStatus.inProgress}
-          />
-        </div>
-        <div className="w-[33%] p-4">
-          <h2 className="text-lg font-bold mb-4">完了</h2>
-          <TodoList
-            todos={todos.filter(
-              (todo) =>
-                (!selectedCategoryId || todo.categoryId === selectedCategoryId) &&
-                todo.status === TodoStatus.completed
-            )}
-            projectStatus={TodoStatus.completed}
-          />
+        <div className="flex h-[90%] w-[95%] mx-auto">
+                <TodoList
+                    todos={todos.filter(
+                    (todo) =>
+                        (!selectedCategoryId || todo.categoryId === selectedCategoryId) &&
+                        todo.status === TodoStatus.pending
+                    )}
+                    projectStatus={TodoStatus.pending}
+                />
+                <TodoList
+                    todos={todos.filter(
+                    (todo) =>
+                        (!selectedCategoryId || todo.categoryId === selectedCategoryId) &&
+                        todo.status === TodoStatus.inProgress
+                    )}
+                    projectStatus={TodoStatus.inProgress}
+                />
+                <TodoList
+                    todos={todos.filter(
+                    (todo) =>
+                        (!selectedCategoryId || todo.categoryId === selectedCategoryId) &&
+                        todo.status === TodoStatus.completed
+                    )}
+                    projectStatus={TodoStatus.completed}
+                />
         </div>
       </div>
     </div>

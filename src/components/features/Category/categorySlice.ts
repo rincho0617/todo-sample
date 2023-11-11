@@ -5,12 +5,12 @@ const state: {categories: Category[]} = {
     categories: [
         {
         id: "1",
-        categoryName: "Sport",
+        categoryName: "マーケティング",
         createdAt: 1
         },
         {
         id: "2",
-        categoryName: "Music",
+        categoryName: "エンジニアリング",
         createdAt: 1
         },
     ]
