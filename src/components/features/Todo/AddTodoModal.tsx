@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import Modal from "../../Common/Modal";
-import AppInput from "../../Common/AppInput";
-import AppTextarea from "../../Common/AppTextarea";
-import { useDispatch } from "react-redux";
-import { TodoItem } from "../../../common/type";
-import { TodoStatus } from "../../../common/enums";
-import { add } from "./todoSlice";
-import { generateUUID } from "../../../utils/GenerateId";
-import { useSelector } from "react-redux";
-import { RootState } from "../rootState";
-import AppSelectBox from "../../Common/AppSelectBox";
+import React, { useState } from 'react';
+import Modal from '../../Common/Modal';
+import AppInput from '../../Common/AppInput';
+import AppTextarea from '../../Common/AppTextarea';
+import { useDispatch } from 'react-redux';
+import { TodoItem } from '../../../common/type';
+import { TodoStatus } from '../../../common/enums';
+import { add } from './todoSlice';
+import { generateUUID } from '../../../utils/GenerateId';
+import { useSelector } from 'react-redux';
+import { RootState } from '../rootState';
+import AppSelectBox from '../../Common/AppSelectBox';
 
 type AddTodoModalProps = {
     isModalOpen: boolean
@@ -17,15 +17,15 @@ type AddTodoModalProps = {
     projectStatus: TodoStatus
 }
 
-export const AddTodoModal: React.FC<AddTodoModalProps> = ({isModalOpen, setIsModalOpen, projectStatus}) => {
-    const dispatch = useDispatch()
-    const categories = useSelector((state: RootState) => state.categoryStore.categories)
+export const AddTodoModal: React.FC<AddTodoModalProps> = ({ isModalOpen, setIsModalOpen, projectStatus }) => {
+    const dispatch = useDispatch();
+    const categories = useSelector((state: RootState) => state.categoryStore.categories);
     const categoryKV = categories.map(category => {
         return {
             key: category.id,
             value: category.categoryName
-        }
-    })
+        };
+    });
     const addTodo = (title: string, content: string, categoryId: string | null) => {
         const newTodo: TodoItem = {
             id: generateUUID(),
@@ -34,28 +34,28 @@ export const AddTodoModal: React.FC<AddTodoModalProps> = ({isModalOpen, setIsMod
             content: content,
             status: projectStatus,
             createdAt: new Date().getTime()
-        }
-        dispatch(add(newTodo))
-    }
+        };
+        dispatch(add(newTodo));
+    };
 
     const sendTodo = (title: string, content: string, categoryId: string | null) => {
         addTodo(title, content, categoryId);
-        setTitle('')
-        setContent('')
-    }
+        setTitle('');
+        setContent('');
+    };
 
-    const [title, setTitle] = useState("")
-    const [content, setContent] = useState("")
-    const [categoryId, setCategoryId] = useState<string | null>(null)
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
+    const [categoryId, setCategoryId] = useState<string | null>(null);
 
     const closeModal = () => {
-        setIsModalOpen(false)
-    }
+        setIsModalOpen(false);
+    };
     return (
         <>
             {isModalOpen && (
                 <Modal
-                    title={"新規追加"} 
+                    title={'新規追加'} 
                     onSubmit={() => sendTodo(title, content, categoryId)} 
                     onClose={closeModal}
                 >
@@ -80,5 +80,5 @@ export const AddTodoModal: React.FC<AddTodoModalProps> = ({isModalOpen, setIsMod
                 </Modal>
             )}
         </>
-    )
-}
+    );
+};

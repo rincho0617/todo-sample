@@ -1,4 +1,4 @@
-import { TodoStatus } from "./enums"
+import { TodoStatus } from './enums';
 
 export type TodoItem = {
     id: string,
