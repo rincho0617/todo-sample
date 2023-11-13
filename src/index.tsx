@@ -13,8 +13,14 @@ root.render(
     <BrowserRouter>
         <DndProvider backend={HTML5Backend}>
             <Routes>
-                <Route path="/" element={<App />}></Route>
-                <Route path="/tasks/:todo_id" Component={TodoDetail}></Route>
+                <Route
+                    path="/"
+                    element={<App />}
+                ></Route>
+                <Route
+                    path="/tasks/:todo_id"
+                    Component={TodoDetail}
+                ></Route>
             </Routes>
         </DndProvider>
         ,

@@ -24,8 +24,11 @@ const AppSelectBox: React.FC<AppSelectBoxProps> = ({
             onChange={handleSelectChange}
         >
             <option value="">選択してください</option>
-            {options.map((option) => (
-                <option key={option.key} value={option.key}>
+            {options.map(option => (
+                <option
+                    key={option.key}
+                    value={option.key}
+                >
                     {option.value}
                 </option>
             ))}

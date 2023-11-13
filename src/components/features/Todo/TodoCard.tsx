@@ -18,7 +18,7 @@ const DraggableTodo: React.FC<DraggableTodoProps> = ({ todo, index }) => {
         (state: RootState) => state.categoryStore.categories,
     );
     const category = categories.find(
-        (category) => category.id === todo.categoryId,
+        category => category.id === todo.categoryId,
     );
     const dispatch = useDispatch();
 
@@ -40,7 +40,7 @@ const DraggableTodo: React.FC<DraggableTodoProps> = ({ todo, index }) => {
     return (
         <div className="h-[30%]">
             <div
-                ref={(node) => {
+                ref={node => {
                     ref(node);
                     preview(node, { captureDraggingState: true });
                 }}

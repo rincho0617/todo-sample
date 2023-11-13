@@ -5,7 +5,7 @@ interface ButtonProps {
     buttonName: string; // ここでbuttonの型を指定
 }
 
-const Button: React.FC<ButtonProps> = (props) => {
+const Button: React.FC<ButtonProps> = props => {
     return <button>{props.buttonName}</button>;
 };
 

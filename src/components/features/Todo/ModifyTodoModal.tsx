@@ -30,7 +30,7 @@ export const ModifyTodoModal: React.FC<ModifyTodoModalProps> = ({
     const categories = useSelector(
         (state: RootState) => state.categoryStore.categories,
     );
-    const categoryKV = categories.map((category) => {
+    const categoryKV = categories.map(category => {
         return {
             key: category.id,
             value: category.categoryName,
@@ -59,13 +59,19 @@ export const ModifyTodoModal: React.FC<ModifyTodoModalProps> = ({
                         <label className="block text-gray-700 text-sm font-bold mb-2">
                             タイトル：
                         </label>
-                        <AppInput value={title} onChange={setTitle} />
+                        <AppInput
+                            value={title}
+                            onChange={setTitle}
+                        />
                     </div>
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2">
                             内容：
                         </label>
-                        <AppTextarea value={content} onChange={setContent} />
+                        <AppTextarea
+                            value={content}
+                            onChange={setContent}
+                        />
                     </div>
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2">

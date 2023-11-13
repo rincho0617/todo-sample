@@ -49,7 +49,7 @@ export const todoSlice = createSlice({
         },
         remove: (state, action: PayloadAction<string>) => {
             state.todos = state.todos.filter(
-                (todo) => todo.id !== action.payload,
+                todo => todo.id !== action.payload,
             );
         },
         updateStatus: (
@@ -57,7 +57,7 @@ export const todoSlice = createSlice({
             action: PayloadAction<{ id: string; newStatus: TodoStatus }>,
         ) => {
             const { id, newStatus } = action.payload;
-            state.todos = state.todos.map((todo) =>
+            state.todos = state.todos.map(todo =>
                 todo.id === id ? { ...todo, status: newStatus } : todo,
             );
         },
@@ -69,7 +69,7 @@ export const todoSlice = createSlice({
             }>,
         ) => {
             const { id, updatedTodo } = action.payload;
-            state.todos = state.todos.map((todo) =>
+            state.todos = state.todos.map(todo =>
                 todo.id === id ? { ...todo, ...updatedTodo } : todo,
             );
         },

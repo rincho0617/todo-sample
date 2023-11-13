@@ -20,7 +20,7 @@ const Presenter: React.FC<PresenterProps> = ({ todos, categories }) => {
         setIsModalOpen(true);
     };
 
-    const categoryKV = categories.map((category) => ({
+    const categoryKV = categories.map(category => ({
         key: category.id,
         value: category.categoryName,
     }));
@@ -34,7 +34,10 @@ const Presenter: React.FC<PresenterProps> = ({ todos, categories }) => {
             <div className="h-[10%] bg-gray-700 text-white flex items-center justify-between">
                 <div className="text-2xl font-bold ml-2">Todoリスト</div>
                 <div className="flex items-center space-x-4">
-                    <div className="cursor-pointer mr-2" onClick={openModal}>
+                    <div
+                        className="cursor-pointer mr-2"
+                        onClick={openModal}
+                    >
                         + カテゴリーを追加
                     </div>
                     <AddCategoryModal
@@ -59,7 +62,7 @@ const Presenter: React.FC<PresenterProps> = ({ todos, categories }) => {
                 <div className="flex h-[90%] w-[95%] mx-auto">
                     <TodoList
                         todos={todos.filter(
-                            (todo) =>
+                            todo =>
                                 (!selectedCategoryId ||
                                     todo.categoryId === selectedCategoryId) &&
                                 todo.status === TodoStatus.pending,
@@ -68,7 +71,7 @@ const Presenter: React.FC<PresenterProps> = ({ todos, categories }) => {
                     />
                     <TodoList
                         todos={todos.filter(
-                            (todo) =>
+                            todo =>
                                 (!selectedCategoryId ||
                                     todo.categoryId === selectedCategoryId) &&
                                 todo.status === TodoStatus.inProgress,
@@ -77,7 +80,7 @@ const Presenter: React.FC<PresenterProps> = ({ todos, categories }) => {
                     />
                     <TodoList
                         todos={todos.filter(
-                            (todo) =>
+                            todo =>
                                 (!selectedCategoryId ||
                                     todo.categoryId === selectedCategoryId) &&
                                 todo.status === TodoStatus.completed,

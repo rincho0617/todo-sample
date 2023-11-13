@@ -46,7 +46,10 @@ export const AddCategoryModal: React.FC<AddCategoryModalProps> = ({
                         <label className="block text-gray-700 text-sm font-bold mb-2">
                             カテゴリー名：
                         </label>
-                        <AppInput value={title} onChange={setTitle} />
+                        <AppInput
+                            value={title}
+                            onChange={setTitle}
+                        />
                     </div>
                 </Modal>
             )}

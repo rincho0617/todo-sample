@@ -46,7 +46,7 @@ const TodoList: React.FC<TodoListProps> = ({ todos, projectStatus }) => {
     return (
         <div
             className="w-full h-full justify-center"
-            ref={(node) => drop(node)}
+            ref={node => drop(node)}
         >
             <div className="h-[10%]">
                 <div></div>

@@ -22,7 +22,7 @@ export const categorySlice = createSlice({
     reducers: {
         add: (state, action: PayloadAction<Category>) => {
             const existingCategory = state.categories.find(
-                (category) =>
+                category =>
                     category.categoryName === action.payload.categoryName,
             );
             if (!existingCategory) {
@@ -35,7 +35,7 @@ export const categorySlice = createSlice({
         },
         remove: (state, action: PayloadAction<string>) => {
             state.categories = state.categories.filter(
-                (category) => category.id !== action.payload,
+                category => category.id !== action.payload,
             );
         },
     },

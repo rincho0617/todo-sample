@@ -8,5 +8,10 @@ export const TodoContainer = () => {
         (state: RootState) => state.categoryStore.categories,
     );
 
-    return <Presenter todos={todos} categories={categories} />;
+    return (
+        <Presenter
+            todos={todos}
+            categories={categories}
+        />
+    );
 };
