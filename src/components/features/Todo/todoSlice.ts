@@ -2,15 +2,15 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { TodoItem } from '../../../common/type';
 import { TodoStatus } from '../../../common/enums';
 
-const state: {todos: TodoItem[]} = {
-    todos: [ 
+const state: { todos: TodoItem[] } = {
+    todos: [
         {
             id: '1',
             categoryId: '1',
             title: '市場調査',
             content: '関西圏の顧客動向を資料にまとめる',
             status: TodoStatus.pending,
-            createdAt: 1
+            createdAt: 1,
         },
         {
             id: '2',
@@ -18,7 +18,7 @@ const state: {todos: TodoItem[]} = {
             title: 'Reactの調査をする',
             content: 'stateとreducerについて調べる',
             status: TodoStatus.pending,
-            createdAt: 2
+            createdAt: 2,
         },
         {
             id: '3',
@@ -26,7 +26,7 @@ const state: {todos: TodoItem[]} = {
             title: 'PCの環境構築をする',
             content: '・macを最新にする\n・dockerをinstallする',
             status: TodoStatus.pending,
-            createdAt: 1
+            createdAt: 1,
         },
         {
             id: '4',
@@ -34,10 +34,9 @@ const state: {todos: TodoItem[]} = {
             title: 'ランニングをする',
             content: '10km走る',
             status: TodoStatus.pending,
-            createdAt: 3
-        }
-
-    ]
+            createdAt: 3,
+        },
+    ],
 };
 
 export const todoSlice = createSlice({
@@ -49,17 +48,32 @@ export const todoSlice = createSlice({
             state.todos.push(action.payload);
         },
         remove: (state, action: PayloadAction<string>) => {
-            state.todos = state.todos.filter(todo => todo.id !== action.payload);
+            state.todos = state.todos.filter(
+                (todo) => todo.id !== action.payload,
+            );
         },
-        updateStatus: (state, action: PayloadAction<{id: string, newStatus: TodoStatus}>) => {
+        updateStatus: (
+            state,
+            action: PayloadAction<{ id: string; newStatus: TodoStatus }>,
+        ) => {
             const { id, newStatus } = action.payload;
-            state.todos = state.todos.map(todo => todo.id === id ? { ...todo, status: newStatus } : todo);
+            state.todos = state.todos.map((todo) =>
+                todo.id === id ? { ...todo, status: newStatus } : todo,
+            );
         },
-        update: (state, action: PayloadAction<{ id: string; updatedTodo: Partial<TodoItem> }>) => {
+        update: (
+            state,
+            action: PayloadAction<{
+                id: string;
+                updatedTodo: Partial<TodoItem>;
+            }>,
+        ) => {
             const { id, updatedTodo } = action.payload;
-            state.todos = state.todos.map((todo) => (todo.id === id ? { ...todo, ...updatedTodo } : todo));
-        }
-    }
+            state.todos = state.todos.map((todo) =>
+                todo.id === id ? { ...todo, ...updatedTodo } : todo,
+            );
+        },
+    },
 });
 
 export const { add, remove, updateStatus, update } = todoSlice.actions;

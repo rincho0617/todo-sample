@@ -1,19 +1,19 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { Category } from '../../../common/type';
 
-const state: {categories: Category[]} = {
+const state: { categories: Category[] } = {
     categories: [
         {
             id: '1',
             categoryName: 'マーケティング',
-            createdAt: 1
+            createdAt: 1,
         },
         {
             id: '2',
             categoryName: 'エンジニアリング',
-            createdAt: 1
+            createdAt: 1,
         },
-    ]
+    ],
 };
 
 export const categorySlice = createSlice({
@@ -21,7 +21,10 @@ export const categorySlice = createSlice({
     initialState: state,
     reducers: {
         add: (state, action: PayloadAction<Category>) => {
-            const existingCategory = state.categories.find(category => category.categoryName === action.payload.categoryName);
+            const existingCategory = state.categories.find(
+                (category) =>
+                    category.categoryName === action.payload.categoryName,
+            );
             if (!existingCategory) {
                 state.categories.push(action.payload);
             } else {
@@ -31,9 +34,11 @@ export const categorySlice = createSlice({
             }
         },
         remove: (state, action: PayloadAction<string>) => {
-            state.categories = state.categories.filter(category => category.id !== action.payload);
+            state.categories = state.categories.filter(
+                (category) => category.id !== action.payload,
+            );
         },
-    }
+    },
 });
 
 export const { add, remove } = categorySlice.actions;

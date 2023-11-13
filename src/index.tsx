@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import TodoDetail from './components/features/Todo/TodoDetail';
 
 const root = ReactDOM.createRoot(
-    document.getElementById('root') as HTMLElement
+    document.getElementById('root') as HTMLElement,
 );
 root.render(
     <BrowserRouter>
@@ -16,8 +16,9 @@ root.render(
                 <Route path="/" element={<App />}></Route>
                 <Route path="/tasks/:todo_id" Component={TodoDetail}></Route>
             </Routes>
-        </DndProvider>,
-    </BrowserRouter>
+        </DndProvider>
+        ,
+    </BrowserRouter>,
 );
 
 // If you want to start measuring performance in your app, pass a function

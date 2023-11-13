@@ -10,9 +10,9 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../rootState';
 
 type ModifyTodoModalProps = {
-  isModalOpen: boolean;
-  setIsModalOpen: (state: boolean) => void;
-  todo: TodoItem;
+    isModalOpen: boolean;
+    setIsModalOpen: (state: boolean) => void;
+    todo: TodoItem;
 };
 
 export const ModifyTodoModal: React.FC<ModifyTodoModalProps> = ({
@@ -22,14 +22,18 @@ export const ModifyTodoModal: React.FC<ModifyTodoModalProps> = ({
 }) => {
     const [title, setTitle] = useState(todo.title);
     const [content, setContent] = useState(todo.content);
-    const [categoryId, setCategoryId] = useState<string | null>(todo.categoryId || null);
+    const [categoryId, setCategoryId] = useState<string | null>(
+        todo.categoryId || null,
+    );
     const dispatch = useDispatch();
 
-    const categories = useSelector((state: RootState) => state.categoryStore.categories);
-    const categoryKV = categories.map(category => {
+    const categories = useSelector(
+        (state: RootState) => state.categoryStore.categories,
+    );
+    const categoryKV = categories.map((category) => {
         return {
             key: category.id,
-            value: category.categoryName
+            value: category.categoryName,
         };
     });
 
@@ -53,13 +57,13 @@ export const ModifyTodoModal: React.FC<ModifyTodoModalProps> = ({
                 >
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2">
-                    タイトル：
+                            タイトル：
                         </label>
                         <AppInput value={title} onChange={setTitle} />
                     </div>
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2">
-                    内容：
+                            内容：
                         </label>
                         <AppTextarea value={content} onChange={setContent} />
                     </div>
@@ -67,7 +71,11 @@ export const ModifyTodoModal: React.FC<ModifyTodoModalProps> = ({
                         <label className="block text-gray-700 text-sm font-bold mb-2">
                             カテゴリー：
                         </label>
-                        <AppSelectBox value={categoryId} options={categoryKV} onChange={setCategoryId}/>
+                        <AppSelectBox
+                            value={categoryId}
+                            options={categoryKV}
+                            onChange={setCategoryId}
+                        />
                     </div>
                 </Modal>
             )}

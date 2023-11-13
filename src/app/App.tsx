@@ -3,11 +3,10 @@ import { store } from './store';
 import { TodoContainer } from '../components/features/Todo/TodoContainer';
 import './../tailwind.css';
 function App() {
-  
     return (
-        <div className='App'>
+        <div className="App">
             <Provider store={store}>
-                <TodoContainer/>
+                <TodoContainer />
             </Provider>
         </div>
     );

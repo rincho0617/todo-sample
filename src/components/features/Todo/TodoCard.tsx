@@ -9,13 +9,17 @@ import { ModifyTodoModal } from './ModifyTodoModal';
 import { Link } from 'react-router-dom';
 
 type DraggableTodoProps = {
-  todo: TodoItem;
-  index: number;
+    todo: TodoItem;
+    index: number;
 };
 
 const DraggableTodo: React.FC<DraggableTodoProps> = ({ todo, index }) => {
-    const categories = useSelector((state: RootState) => state.categoryStore.categories);
-    const category = categories.find((category) => category.id === todo.categoryId);
+    const categories = useSelector(
+        (state: RootState) => state.categoryStore.categories,
+    );
+    const category = categories.find(
+        (category) => category.id === todo.categoryId,
+    );
     const dispatch = useDispatch();
 
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -35,10 +39,18 @@ const DraggableTodo: React.FC<DraggableTodoProps> = ({ todo, index }) => {
 
     return (
         <div className="h-[30%]">
-            <div ref={(node) => { ref(node); preview(node, { captureDraggingState: true }); }} className="flex h-full justify-between border p-4 m-4 rounded-lg shadow-lg">
+            <div
+                ref={(node) => {
+                    ref(node);
+                    preview(node, { captureDraggingState: true });
+                }}
+                className="flex h-full justify-between border p-4 m-4 rounded-lg shadow-lg"
+            >
                 <div className="h-full w-full">
                     <div className="flex items-center h-[30%] justify-between">
-                        <div className="text-xl font-semibold">{todo.title}</div>
+                        <div className="text-xl font-semibold">
+                            {todo.title}
+                        </div>
                         {category && (
                             <div className="bg-slate-400 text-sm text-white p-1 rounded">
                                 {category.categoryName}
@@ -50,11 +62,12 @@ const DraggableTodo: React.FC<DraggableTodoProps> = ({ todo, index }) => {
                             <button
                                 type="button"
                                 className=""
-                                onClick={openModal}>
+                                onClick={openModal}
+                            >
                                 <img
                                     className="w-4 h-4"
-                                    src="/logos/editIcon.svg" 
-                                    alt="編集" 
+                                    src="/logos/editIcon.svg"
+                                    alt="編集"
                                 />
                             </button>
                         </Link>
@@ -63,15 +76,21 @@ const DraggableTodo: React.FC<DraggableTodoProps> = ({ todo, index }) => {
                             onClick={() => removeTodo(todo.id)}
                             className="ml-2"
                         >
-                            <img className="w-4 h-4" src="/logos/trashBox.svg" alt="削除" />
+                            <img
+                                className="w-4 h-4"
+                                src="/logos/trashBox.svg"
+                                alt="削除"
+                            />
                         </button>
                     </div>
                     <div className="h-[70%] overflow-hidden">
-                        <div className="pt-2 text-gray-700 whitespace-pre-line">{todo.content}</div>
+                        <div className="pt-2 text-gray-700 whitespace-pre-line">
+                            {todo.content}
+                        </div>
                     </div>
                 </div>
             </div>
-            <ModifyTodoModal 
+            <ModifyTodoModal
                 isModalOpen={isModalOpen}
                 setIsModalOpen={setIsModalOpen}
                 todo={todo}
