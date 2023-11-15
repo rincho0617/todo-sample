@@ -33,5 +33,6 @@ module.exports = {
         quotes: ['error', 'single'],
         semi: ['error', 'always'],
         'object-curly-spacing': ['error', 'always'],
+        'react/prop-types': 'off',
     },
 };
