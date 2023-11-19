@@ -5,7 +5,7 @@ describe('AppTextarea', () => {
     test('AppTextarea displays correctly', () => {
         const handleChange = jest.fn();
   
-        render(<AppTextarea value="" onChange={handleChange} />);
+        render(<AppTextarea value="" placeholder='' onChange={handleChange} />);
         const element = screen.getByRole('textbox');
         expect(element).toBeInTheDocument();
     });
@@ -13,7 +13,7 @@ describe('AppTextarea', () => {
     test('AppTextarea calls onChange when value changes', () => {
         const handleChange = jest.fn();
   
-        render(<AppTextarea value="" onChange={handleChange} />);
+        render(<AppTextarea value="" placeholder='' onChange={handleChange} />);
         const textareaElement = screen.getByRole('textbox');
   
         // ユーザーアクション（テキストエリアの値の変更）を模倣

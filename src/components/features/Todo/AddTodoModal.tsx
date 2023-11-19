@@ -79,7 +79,7 @@ export const AddTodoModal: React.FC<AddTodoModalProps> = ({
                         </label>
                         <AppInput
                             value={title}
-                            placeholder=''
+                            placeholder='タイトルを入力'
                             onChange={setTitle}
                         />
                     </div>
@@ -89,6 +89,7 @@ export const AddTodoModal: React.FC<AddTodoModalProps> = ({
                         </label>
                         <AppTextarea
                             value={content}
+                            placeholder='内容を入力'
                             onChange={setContent}
                         />
                     </div>

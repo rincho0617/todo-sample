@@ -61,6 +61,7 @@ export const ModifyTodoModal: React.FC<ModifyTodoModalProps> = ({
                         </label>
                         <AppInput
                             value={title}
+                            placeholder=''
                             onChange={setTitle}
                         />
                     </div>
@@ -70,6 +71,7 @@ export const ModifyTodoModal: React.FC<ModifyTodoModalProps> = ({
                         </label>
                         <AppTextarea
                             value={content}
+                            placeholder=''
                             onChange={setContent}
                         />
                     </div>

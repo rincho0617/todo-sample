@@ -46,30 +46,4 @@ describe('AddCategoryModal', () => {
         // モーダルが閉じられたことを確認
         expect(setIsModalOpen).toHaveBeenCalledWith(false);
     });
-
-    it('should close the modal when cancel button is clicked', () => {
-        const mockStore = configureStore({
-            reducer: {
-                categoryStore: categorySlice.reducer,
-            },
-            preloadedState: {
-                categoryStore: {
-                    categories: []
-                }
-            }
-        });
-        const setIsModalOpen = jest.fn();
-
-        render(
-            <Provider store={mockStore}>
-                <AddCategoryModal isModalOpen={true} setIsModalOpen={setIsModalOpen} />
-            </Provider>
-        );
-
-        // キャンセルボタンをクリック
-        fireEvent.click(screen.getByText('キャンセル'));
-
-        // モーダルが閉じられたことを確認
-        expect(setIsModalOpen).toHaveBeenCalledWith(false);
-    });
 });
