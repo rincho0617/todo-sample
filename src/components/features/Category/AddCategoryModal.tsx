@@ -47,7 +47,7 @@ export const AddCategoryModal: React.FC<AddCategoryModalProps> = ({
                             カテゴリー名：
                         </label>
                         <AppInput
-                            placeholder='カテゴリー名を入力'
+                            placeholder="カテゴリー名を入力"
                             value={title}
                             onChange={setTitle}
                         />

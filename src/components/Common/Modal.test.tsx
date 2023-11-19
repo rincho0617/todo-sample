@@ -7,9 +7,13 @@ describe('Modal', () => {
         const onClose = jest.fn();
 
         render(
-            <Modal title="Test Modal" onSubmit={onSubmit} onClose={onClose}>
+            <Modal
+                title="Test Modal"
+                onSubmit={onSubmit}
+                onClose={onClose}
+            >
                 <p>Modal content</p>
-            </Modal>
+            </Modal>,
         );
 
         // モーダルが正しく表示されていることを検証
@@ -22,9 +26,13 @@ describe('Modal', () => {
         const onClose = jest.fn();
 
         render(
-            <Modal title="Test Modal" onSubmit={onSubmit} onClose={onClose}>
+            <Modal
+                title="Test Modal"
+                onSubmit={onSubmit}
+                onClose={onClose}
+            >
                 <p>Modal content</p>
-            </Modal>
+            </Modal>,
         );
 
         // 送信ボタンをクリック
@@ -40,9 +48,13 @@ describe('Modal', () => {
         const onClose = jest.fn();
 
         render(
-            <Modal title="Test Modal" onSubmit={onSubmit} onClose={onClose}>
+            <Modal
+                title="Test Modal"
+                onSubmit={onSubmit}
+                onClose={onClose}
+            >
                 <p>Modal content</p>
-            </Modal>
+            </Modal>,
         );
 
         // キャンセルボタンをクリック

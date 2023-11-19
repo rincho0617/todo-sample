@@ -6,7 +6,6 @@ import { TodoItem } from '../../../common/type';
 import { useSelector } from 'react-redux';
 import { RootState } from '../rootState';
 import { ModifyTodoModal } from './ModifyTodoModal';
-import { Link } from 'react-router-dom';
 
 type DraggableTodoProps = {
     todo: TodoItem;
@@ -58,19 +57,17 @@ const DraggableTodo: React.FC<DraggableTodoProps> = ({ todo, index }) => {
                         )}
                     </div>
                     <div className="flex items-center">
-                        <Link to={`tasks/${todo.id}`}>
-                            <button
-                                type="button"
-                                className=""
-                                onClick={openModal}
-                            >
-                                <img
-                                    className="w-4 h-4"
-                                    src="/logos/editIcon.svg"
-                                    alt="編集"
-                                />
-                            </button>
-                        </Link>
+                        <button
+                            type="button"
+                            className=""
+                            onClick={openModal}
+                        >
+                            <img
+                                className="w-4 h-4"
+                                src="/logos/editIcon.svg"
+                                alt="編集"
+                            />
+                        </button>
                         <button
                             type="button"
                             onClick={() => removeTodo(todo.id)}

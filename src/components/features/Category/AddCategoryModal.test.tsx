@@ -1,13 +1,12 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Provider } from 'react-redux';
-import { categorySlice } from './categorySlice';  // categorySliceに合わせてインポート
+import { categorySlice } from './categorySlice'; // categorySliceに合わせてインポート
 
 import { AddCategoryModal } from './AddCategoryModal';
 import { configureStore } from '@reduxjs/toolkit';
 
 describe('AddCategoryModal', () => {
-    
     it('should dispatch add action when submitting the form', async () => {
         const user = userEvent.setup();
         const mockStore = configureStore({
@@ -16,20 +15,26 @@ describe('AddCategoryModal', () => {
             },
             preloadedState: {
                 categoryStore: {
-                    categories: []
-                }
-            }
+                    categories: [],
+                },
+            },
         });
         const setIsModalOpen = jest.fn();
 
         render(
             <Provider store={mockStore}>
-                <AddCategoryModal isModalOpen={true} setIsModalOpen={setIsModalOpen} />
-            </Provider>
+                <AddCategoryModal
+                    isModalOpen={true}
+                    setIsModalOpen={setIsModalOpen}
+                />
+            </Provider>,
         );
 
         // カテゴリー名を入力
-        await user.type(screen.getByPlaceholderText('カテゴリー名を入力'), 'Test Category');
+        await user.type(
+            screen.getByPlaceholderText('カテゴリー名を入力'),
+            'Test Category',
+        );
 
         // 送信ボタンをクリック
         fireEvent.click(screen.getByText('送信'));

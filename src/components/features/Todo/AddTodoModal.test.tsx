@@ -13,44 +13,50 @@ describe('AddTodoModal', () => {
         const mockStore = configureStore({
             reducer: {
                 todoStore: todoSlice.reducer,
-                categoryStore: categorySlice.reducer
+                categoryStore: categorySlice.reducer,
             },
             preloadedState: {
                 todoStore: {
-                    todos: []
+                    todos: [],
                 },
                 categoryStore: {
                     categories: [
                         {
                             id: 'xxxx',
                             categoryName: 'Test category1',
-                            createdAt: 1
+                            createdAt: 1,
                         },
                         {
                             id: '2',
                             categoryName: 'Test category2',
-                            createdAt: 2
-                        }
-                    ]
-                }
-            }
+                            createdAt: 2,
+                        },
+                    ],
+                },
+            },
         });
 
         const setIsModalOpen = jest.fn();
 
         render(
             <Provider store={mockStore}>
-                <AddTodoModal 
+                <AddTodoModal
                     isModalOpen={true}
                     setIsModalOpen={setIsModalOpen}
                     projectStatus={TodoStatus.pending}
                 />
-            </Provider>
+            </Provider>,
         );
 
-        await user.type(screen.getByPlaceholderText('タイトルを入力'), 'Test Title');
+        await user.type(
+            screen.getByPlaceholderText('タイトルを入力'),
+            'Test Title',
+        );
 
-        await user.type(screen.getByPlaceholderText('内容を入力'), 'Test Content');
+        await user.type(
+            screen.getByPlaceholderText('内容を入力'),
+            'Test Content',
+        );
 
         await user.selectOptions(screen.getByRole('combobox'), ['xxxx']);
 
@@ -64,7 +70,7 @@ describe('AddTodoModal', () => {
                 content: 'Test Content',
                 status: TodoStatus.pending,
                 createdAt: expect.any(Number),
-            }
+            },
         ]);
     });
 });

@@ -2,11 +2,15 @@ import React from 'react';
 
 type TextInputProps = {
     value: string;
-    placeholder: string
+    placeholder: string;
     onChange: (value: string) => void;
 };
 
-const AppInput: React.FC<TextInputProps> = ({ value, placeholder,onChange }) => {
+const AppInput: React.FC<TextInputProps> = ({
+    value,
+    placeholder,
+    onChange,
+}) => {
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         onChange(e.target.value);
     };

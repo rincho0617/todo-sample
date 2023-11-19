@@ -6,7 +6,11 @@ type TextareaProps = {
     onChange: (value: string) => void;
 };
 
-const AppTextarea: React.FC<TextareaProps> = ({ value, placeholder, onChange }) => {
+const AppTextarea: React.FC<TextareaProps> = ({
+    value,
+    placeholder,
+    onChange,
+}) => {
     const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         onChange(e.target.value);
     };

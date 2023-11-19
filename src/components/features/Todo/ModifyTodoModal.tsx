@@ -8,6 +8,7 @@ import AppTextarea from '../../Common/AppTextarea';
 import AppSelectBox from '../../Common/AppSelectBox';
 import { useSelector } from 'react-redux';
 import { RootState } from '../rootState';
+import { Link } from 'react-router-dom';
 
 type ModifyTodoModalProps = {
     isModalOpen: boolean;
@@ -51,17 +52,22 @@ export const ModifyTodoModal: React.FC<ModifyTodoModalProps> = ({
         <>
             {isModalOpen && (
                 <Modal
-                    title={'タイトルの更新'}
+                    title={'タスクの更新'}
                     onSubmit={updateTodo}
                     onClose={closeModal}
                 >
+                    <Link to={`tasks/${todo.id}`}>
+                        <div className="text-sm text-blue-400 mb-4">
+                            このタスクに移動する
+                        </div>
+                    </Link>
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2">
                             タイトル：
                         </label>
                         <AppInput
                             value={title}
-                            placeholder=''
+                            placeholder=""
                             onChange={setTitle}
                         />
                     </div>
@@ -71,7 +77,7 @@ export const ModifyTodoModal: React.FC<ModifyTodoModalProps> = ({
                         </label>
                         <AppTextarea
                             value={content}
-                            placeholder=''
+                            placeholder=""
                             onChange={setContent}
                         />
                     </div>
