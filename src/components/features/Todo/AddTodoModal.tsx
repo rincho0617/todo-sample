@@ -79,6 +79,7 @@ export const AddTodoModal: React.FC<AddTodoModalProps> = ({
                         </label>
                         <AppInput
                             value={title}
+                            placeholder=''
                             onChange={setTitle}
                         />
                     </div>

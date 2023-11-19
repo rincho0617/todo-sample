@@ -14,7 +14,7 @@ const AppTextarea: React.FC<TextareaProps> = ({ value, onChange }) => {
         <textarea
             className="w-full px-3 py-2 border rounded-md"
             value={value}
-            rows={5}
+            rows={2}
             onChange={handleInputChange}
         />
     );

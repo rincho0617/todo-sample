@@ -13,7 +13,6 @@ const AppSelectBox: React.FC<AppSelectBoxProps> = ({
     onChange,
 }) => {
     const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        console.log(e.target.value);
         onChange(e.target.value);
     };
 
