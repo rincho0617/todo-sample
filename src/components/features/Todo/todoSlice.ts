@@ -25,7 +25,7 @@ const state: { todos: TodoItem[] } = {
             categoryId: '2',
             title: 'PCの環境構築をする',
             content: '・macを最新にする\n・dockerをinstallする',
-            status: TodoStatus.pending,
+            status: TodoStatus.inProgress,
             createdAt: 1,
         },
         {
